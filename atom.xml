@@ -6,7 +6,7 @@
   <link href="https://oxyzchen.github.io/atom.xml" rel="self"/>
   
   <link href="https://oxyzchen.github.io/"/>
-  <updated>2022-02-14T03:23:56.000Z</updated>
+  <updated>2022-02-26T15:49:17.763Z</updated>
   <id>https://oxyzchen.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>win10安装wsl2并迁移到D盘</title>
+    <link href="https://oxyzchen.github.io/2022/02/26/win10%E5%AE%89%E8%A3%85wsl2%E5%B9%B6%E8%BF%81%E7%A7%BB%E5%88%B0D%E7%9B%98/"/>
+    <id>https://oxyzchen.github.io/2022/02/26/win10%E5%AE%89%E8%A3%85wsl2%E5%B9%B6%E8%BF%81%E7%A7%BB%E5%88%B0D%E7%9B%98/</id>
+    <published>2022-02-26T15:47:55.000Z</published>
+    <updated>2022-02-26T15:49:17.763Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a>一、准备</h1><p>当前系统版本 Windows 10 企业版 LTSC 21H2 （家庭版可能不一样）</p><p>启用Hyper-V、适用于Linux的Windows子系统</p><img src="/2022/02/26/win10%E5%AE%89%E8%A3%85wsl2%E5%B9%B6%E8%BF%81%E7%A7%BB%E5%88%B0D%E7%9B%98/image-20220226225020788.png" class="" title="image-20220226225020788"><img src="/2022/02/26/win10%E5%AE%89%E8%A3%85wsl2%E5%B9%B6%E8%BF%81%E7%A7%BB%E5%88%B0D%E7%9B%98/image-20220226225047580.png" class="" title="image-20220226225047580"><h1 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h1><p>将 WSL 2 设置为默认版本</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--set-default-version</span> <span class="number">2</span></span><br></pre></td></tr></table></figure><p>在Microsoft Store 安装，这里咱选的是Ubuntu18.04 LTS</p><img src="/2022/02/26/win10%E5%AE%89%E8%A3%85wsl2%E5%B9%B6%E8%BF%81%E7%A7%BB%E5%88%B0D%E7%9B%98/image-20220226225651118.png" class="" title="image-20220226225651118"><p>安装之后打开，设置用户名和密码</p><img src="/2022/02/26/win10%E5%AE%89%E8%A3%85wsl2%E5%B9%B6%E8%BF%81%E7%A7%BB%E5%88%B0D%E7%9B%98/image-20220226225743244.png" class="" title="image-20220226225743244"><p>使用PowerShell也能查看到</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--list</span> <span class="literal">--all</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure><img src="/2022/02/26/win10%E5%AE%89%E8%A3%85wsl2%E5%B9%B6%E8%BF%81%E7%A7%BB%E5%88%B0D%E7%9B%98/image-20220226230026932.png" class="" title="image-20220226230026932"><p>到这里wsl2基本安装好了</p><h1 id="三、迁移到D盘"><a href="#三、迁移到D盘" class="headerlink" title="三、迁移到D盘"></a>三、迁移到D盘</h1><p>应该有两种方法，一种是使用LxRunOffline</p><p>参考：<a href="https://learnku.com/articles/46234">记录 WSL 从 C 盘迁移至 D 盘 | Laravel China 社区 (learnku.com)</a></p><p>另一种是使用自带的wsl命令</p><p>参考：<a href="https://blog.csdn.net/w851685279/article/details/108904106?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_ecpm_v1~rank_v31_ecpm-1-108904106.pc_agg_new_rank&utm_term=win10+%E5%B0%86wsl2+%E8%AE%BE%E7%BD%AE%E5%88%B0d%E7%9B%98&spm=1000.2123.3001.4430">win10 wsl2修改默认安装目录到其他盘_程序猿的博客-CSDN博客_wsl2 安装位置</a></p><p><a href="https://www.cnblogs.com/konghuanxi/p/14731846.html">WSL2安装Ubuntu20.04 - 老王的笔记 - 博客园 (cnblogs.com)</a></p><p>这里咱使用的是第二种</p><h2 id="确保wsl是关闭状态"><a href="#确保wsl是关闭状态" class="headerlink" title="确保wsl是关闭状态"></a>确保wsl是关闭状态</h2><img src="/2022/02/26/win10%E5%AE%89%E8%A3%85wsl2%E5%B9%B6%E8%BF%81%E7%A7%BB%E5%88%B0D%E7%9B%98/image-20220226232956596.png" class="" title="image-20220226232956596"><h2 id="导出分发版为tar文件到d盘"><a href="#导出分发版为tar文件到d盘" class="headerlink" title="导出分发版为tar文件到d盘"></a>导出分发版为tar文件到d盘</h2><p>命令：<code>wsl --export 虚拟机名称 文件导出路径</code></p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--export</span> Ubuntu<span class="literal">-18</span>.<span class="number">04</span> D:\wsl\wsl<span class="literal">-ubuntu-18</span>.<span class="number">04</span>.tar</span><br></pre></td></tr></table></figure><h2 id="卸载虚拟机（删除C盘的虚拟机数据）"><a href="#卸载虚拟机（删除C盘的虚拟机数据）" class="headerlink" title="卸载虚拟机（删除C盘的虚拟机数据）"></a>卸载虚拟机（删除C盘的虚拟机数据）</h2><p>命令：wsl –unregister 虚拟机名称</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --unregister Ubuntu-18.04</span><br></pre></td></tr></table></figure><img src="/2022/02/26/win10%E5%AE%89%E8%A3%85wsl2%E5%B9%B6%E8%BF%81%E7%A7%BB%E5%88%B0D%E7%9B%98/image-20220226233647889.png" class="" title="image-20220226233647889"><h2 id="导入新的虚拟机"><a href="#导入新的虚拟机" class="headerlink" title="导入新的虚拟机"></a>导入新的虚拟机</h2><p>目标路径：新的虚拟机文件路径（理解为软件的安装路径就对了，我安装在D:\wsl\Ubuntu1804）</p><p>虚拟机文件路径：第3步导出的文件（D:\wsl\wsl-ubuntu-18.04.tar）</p><p>–version 2：指定使用WSL2，如果填1就是指定使用WSL</p><p>命令<code>wsl --import 虚拟机名称 目标路径 虚拟机文件路径 --version 2</code></p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--import</span> Ubuntu<span class="literal">-18</span>.<span class="number">04</span> D:\wsl\Ubuntu1804 D:\wsl\wsl<span class="literal">-ubuntu-18</span>.<span class="number">04</span>.tar <span class="literal">--version</span> <span class="number">2</span></span><br></pre></td></tr></table></figure><p>导出后可以看到wsl以硬盘镜像文件在D盘指定的文件夹下</p><img src="/2022/02/26/win10%E5%AE%89%E8%A3%85wsl2%E5%B9%B6%E8%BF%81%E7%A7%BB%E5%88%B0D%E7%9B%98/image-20220226234209201.png" class="" title="image-20220226234209201"><p>接下来就可以正常使用了</p><h1 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h1><h2 id="错误代码0x800701bc"><a href="#错误代码0x800701bc" class="headerlink" title="错误代码0x800701bc"></a>错误代码0x800701bc</h2><p>Installing, this may take a few minutes…<br> WslRegisterDistribution failed with error: 0x800701bc<br> Error: 0x800701bc WSL 2 ?????????????????? <a href="https://aka.ms/wsl2kernel">https://aka.ms/wsl2kernel</a></p><p>解决：使用<strong>管理员</strong>权限运行powershell，并输入<code>wsl --update</code>   执行</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一、准备&quot;&gt;&lt;a href=&quot;#一、准备&quot; class=&quot;headerlink&quot; title=&quot;一、准备&quot;&gt;&lt;/a&gt;一、准备&lt;/h1&gt;&lt;p&gt;当前系统版本 Windows 10 企业版 LTSC 21H2 （家庭版可能不一样）&lt;/p&gt;
+&lt;p&gt;启用Hyper-V、适用</summary>
+      
+    
+    
+    
+    
+    <category term="wsl" scheme="https://oxyzchen.github.io/tags/wsl/"/>
+    
+  </entry>
   
   <entry>
     <title>建站日志</title>
